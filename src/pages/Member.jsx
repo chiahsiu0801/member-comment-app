@@ -43,7 +43,7 @@ export default function Member() {
   const getComments = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.get('https://member-comment-system.onrender.com/comment');
+      const res = await axios.get('https://member-comment-system.onrender.com/comment', {withCredentials: true});
 
       setCommentList(res.data.comments);
       setIsLoading(false); 
@@ -64,7 +64,7 @@ export default function Member() {
         username: userData.name,
         comment: newComment,
         date: date
-      });
+      }, {withCredentials: true});
 
       getComments();
     } catch (error) {
@@ -102,7 +102,7 @@ export default function Member() {
         repliedCommentId: repliedCommentId,
         reply: reply,
         replyUserId: userData._id,
-      });
+      }, {withCredentials: true});
 
       getComments();
 
@@ -133,7 +133,7 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('https://member-comment-system.onrender.com/allmembers');
+        const res = await axios.get('https://member-comment-system.onrender.com/allmembers', {withCredentials: true});
 
         setAllMembers(res.data.members);
       } catch (error) {

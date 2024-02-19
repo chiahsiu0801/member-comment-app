@@ -24,7 +24,7 @@ export default function Signup() {
     try {
       const res = await axios.post('https://member-comment-system.onrender.com/signup', {
         data: data
-      });
+      }, {withCredentials: true});
 
       setSignupSuccess(res.data.success);
       setFailedMessage('');

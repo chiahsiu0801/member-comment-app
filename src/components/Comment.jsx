@@ -27,7 +27,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
       await axios.post('https://member-comment-system.onrender.com/like', {
         commentId: id,
         likedUser: userData._id
-      });
+      }, {withCredentials: true});
 
       setLike(true);
 

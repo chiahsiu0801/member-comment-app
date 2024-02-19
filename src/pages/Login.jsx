@@ -24,7 +24,7 @@ function Login() {
     try {
       const res = await axios.post('https://member-comment-system.onrender.com/login', {
         data: data
-      });
+      }, {withCredentials: true});
 
       setLoginSuccess(res.data.success);
       setFailedMessage('');
