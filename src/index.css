@@ -1,0 +1,15 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .commentTextArea {
+    @apply rounded-xl w-3/5 h-1/6 border-2 border-slate-500 mt-2 fixed bottom-0 z-50;
+  }
+
+  .replyTextArea {
+    @apply rounded-xl w-3/5 h-1/6 border-2 border-slate-500 mt-2 fixed bottom-0 z-50;
+    transform: translate(0, 100%);
+    transition: transform 0.3s ease-in-out; 
+  }
+}
