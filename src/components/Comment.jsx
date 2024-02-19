@@ -88,7 +88,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
     <div className="bg-gray-700 text-gray-400 px-6 py-4 rounded-lg my-4 z-5 relative box-content" id={id} ref={commentSectionRef}>
       <div className="absolute z-20 bg-gray-700 left-6 right-6" ref={commentRef}>
         <div className="flex items-center my-1">
-          <img src={imageUrl || `../../../../public/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-10 w-10 object-cover" />
+          <img src={imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-10 w-10 object-cover" />
           <h2 className="ml-2 mr-1 text-white text-lg">{name}</h2>
           <p className="mx-1 mt-0.5 text-sm">{date}</p>
         </div>
@@ -123,7 +123,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
                     <div key={replyComment._id} className="my-2">
                       <div className="flex items-center">
                         <div className="mr-2 w-4 border-b-2 border-slate-500"></div>
-                        <img src={allMembersMap.get(replyComment.replyUserId)?.[0] || `../../../../public/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-6 w-6 object-cover" />
+                        <img src={allMembersMap.get(replyComment.replyUserId)?.[0] || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-6 w-6 object-cover" />
                         <h2 className="ml-2 mr-1 text-white text-lg">{allMembersMap.get(replyComment.replyUserId)?.[1]}</h2>
                       </div>
                       <pre className="text-md ml-14 text-wrap font-sans">{replyComment.reply}</pre>

@@ -169,7 +169,7 @@ export default function Member() {
             <div className="w-full absolute z-10 bg-slate-600">
               {
                 <div className="flex p-2 items-center justify-center">
-                  <img src={userData.imageUrl || `../../../../public/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-10 w-10 object-cover" />
+                  <img src={userData.imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-10 w-10 object-cover" />
                   <h2 className="ml-2 mr-1 text-white text-2xl">Hello, {userData.name}</h2>
                 </div>
               }
@@ -193,7 +193,7 @@ export default function Member() {
                   allMembers.map((member) => {
                     return (
                       <div key={member._id} className="flex mx-4 p-2 items-center">
-                        <img src={member.imageUrl || `../../../../public/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-8 w-8 object-cover" />
+                        <img src={member.imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-8 w-8 object-cover" />
                         <h2 className="ml-2 mr-1 text-white text-md">{member.name}</h2>
                       </div>
                     );
