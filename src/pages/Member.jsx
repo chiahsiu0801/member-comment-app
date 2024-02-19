@@ -115,7 +115,7 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('https://member-comment-system.onrender.com/member');
+        const res = await axios.get('https://member-comment-system.onrender.com/member', {withCredentials: true});
 
         setUserData(res.data.member);
       } catch (error) {
