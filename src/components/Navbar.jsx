@@ -6,7 +6,7 @@ export default function Navbar({ commentNums }) {
 
   const handleClick = async () => {
     try {
-      await axios.get('/api/signout');
+      await axios.get('https://member-comment-system.onrender.com/signout');
       navigate('/');
     } catch (error) {
       console.log(error);

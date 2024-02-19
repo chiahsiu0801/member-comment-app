@@ -24,7 +24,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
   
   const handleLikeClick = async () => {
     try {
-      await axios.post('/api/like', {
+      await axios.post('https://member-comment-system.onrender.com/like', {
         commentId: id,
         likedUser: userData._id
       });

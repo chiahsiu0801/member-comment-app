@@ -22,7 +22,7 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('api/login', {
+      const res = await axios.post('https://member-comment-system.onrender.com/login', {
         data: data
       });
 

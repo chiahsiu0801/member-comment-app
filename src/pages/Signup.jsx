@@ -22,7 +22,7 @@ export default function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('api/signup', {
+      const res = await axios.post('https://member-comment-system.onrender.com/signup', {
         data: data
       });
 

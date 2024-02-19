@@ -43,7 +43,7 @@ export default function Member() {
   const getComments = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.get('/api/comment');
+      const res = await axios.get('https://member-comment-system.onrender.com/comment');
 
       setCommentList(res.data.comments);
       setIsLoading(false); 
@@ -60,7 +60,7 @@ export default function Member() {
     const date = new Date().toLocaleString();
 
     try {
-      await axios.post('/api/comment', {
+      await axios.post('https://member-comment-system.onrender.com/comment', {
         username: userData.name,
         comment: newComment,
         date: date
@@ -98,7 +98,7 @@ export default function Member() {
 
   const handleReplySendClick = async (reply) => {
     try {
-      await axios.post('api/reply', {
+      await axios.post('https://member-comment-system.onrender.com/reply', {
         repliedCommentId: repliedCommentId,
         reply: reply,
         replyUserId: userData._id,
@@ -115,7 +115,7 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('/api/member');
+        const res = await axios.get('https://member-comment-system.onrender.com/member');
 
         setUserData(res.data.member);
       } catch (error) {
@@ -133,7 +133,7 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('/api/allmembers');
+        const res = await axios.get('https://member-comment-system.onrender.com/allmembers');
 
         setAllMembers(res.data.members);
       } catch (error) {
