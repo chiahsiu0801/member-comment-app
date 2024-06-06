@@ -1,25 +1,18 @@
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 import "../index.css";
 
-export default function ReplyTextarea({ name, calculateHeight, handleClick }) {
+export default function ReplyTextarea({ name, handleClick }) {
+  const { roomId } = useParams();
+
   const [reply, setReply] = useState('');
   const textareaRef = useRef(null);
 
   const handleChange = (e) => {
     setReply(e.target.value);
+    e.target.style.height = 'auto';
+    e.target.style.height = e.target.scrollHeight + 'px';
   }
-
-  useEffect(() => {
-    if (textareaRef.current) { 
-      textareaRef.current.style.height = "0px";
-      const scrollHeight = textareaRef.current.scrollHeight;
-
-      textareaRef.current.style.height = scrollHeight + "px";
-    }
-
-    calculateHeight();
-  }, [reply, calculateHeight]);
 
   return (
     <div className="mt-1 relative">
@@ -27,7 +20,7 @@ export default function ReplyTextarea({ name, calculateHeight, handleClick }) {
         <textarea rows="1" className="resize-none w-full rounded-lg block p-2.5 text-md bg-gray-500 border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none" placeholder={`Reply to ${name}...`} onChange={handleChange} value={reply} ref={textareaRef} />
       </div>
       <button type="button" className="hover:text-white text-slate-300 font-bold text-sm py-1 px-4 rounded absolute bottom-0 left-full -translate-x-full -translate-y-1/3" onClick={() => {
-        handleClick(reply);
+        handleClick(reply, roomId);
         setReply('');
       }}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  viewBox="0 0 16 16">

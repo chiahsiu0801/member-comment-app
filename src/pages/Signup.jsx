@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import FailedMessage from "../components/FailedMessage";
 import Input from "../components/Input";
 
@@ -22,14 +21,16 @@ export default function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('https://member-comment-system.onrender.com/signup', {
+      const res = await axios.post('http://localhost:3000/signup', {
         data: data
       }, {withCredentials: true});
 
       setSignupSuccess(res.data.success);
       setFailedMessage('');
 
-      navigate('/member');
+      if(res.data.success) {
+        navigate('/roomlist');
+      }
     } catch (error) {
       console.log(error);
       setSignupSuccess(error.response.data.success);
@@ -39,7 +40,7 @@ export default function Signup() {
 
   return (
     <>
-      <div className="bg-white p-8 rounded-md shadow-md w-1/4">
+      <div className="w-[300px] md:w-[500px] bg-white p-8 rounded-md shadow-md m-auto">
         <h2 className="text-2xl font-semibold mb-5">Signup</h2>
         {
           (!signupSuccess) && <FailedMessage message={failedMessage} />

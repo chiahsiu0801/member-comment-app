@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import FailedMessage from "../components/FailedMessage";
 import Input from "../components/Input";
 
@@ -22,13 +21,13 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('https://member-comment-system.onrender.com/login', {
+      const res = await axios.post('http://localhost:3000/login', {
         data: data
       }, {withCredentials: true});
 
       setLoginSuccess(res.data.success);
       setFailedMessage('');
-      navigate('/member');
+      navigate('/roomlist');
     } catch (error) {
       console.log(error);
       setLoginSuccess(error.response.data.success);
@@ -38,7 +37,7 @@ function Login() {
 
   return (
     <>
-      <div className="bg-white p-8 rounded-md shadow-md w-1/4">
+      <div className="w-[300px] md:w-[500px] bg-white p-8 rounded-md shadow-md m-auto">
         <h2 className="text-2xl font-semibold mb-5">Login</h2>
         {
           (!loginSuccess) && <FailedMessage message={failedMessage} /> 
