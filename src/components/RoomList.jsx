@@ -34,7 +34,7 @@ const RoomList = () => {
   });
 
   const handleCreateRoom = async () => {
-    const res = await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/createroom', {
+    const res = await axios.post('https://member-real-time-chatroom.vercel.app/createroom', {
       userId: userDataRef.current.member._id,
       roomName: roomName,
     }, {withCredentials: true});
@@ -44,7 +44,7 @@ const RoomList = () => {
 
   const handleJoinRoom = async (data) => {
     try {
-      const res = await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/joinroom', {
+      const res = await axios.post('https://member-real-time-chatroom.vercel.app/joinroom', {
         roomId: data.id,
         userId: userDataRef.current.member._id,
       });
@@ -60,7 +60,7 @@ const RoomList = () => {
 
   const handleLogOut = async () => {
     try {
-      await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/signout', {withCredentials: true});
+      await axios.get('https://member-real-time-chatroom.vercel.app/signout', {withCredentials: true});
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -71,11 +71,11 @@ const RoomList = () => {
     (async () => {
       try {
         setIsLoading(true);
-        const resMember = await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/member', {withCredentials: true});
+        const resMember = await axios.get('https://member-real-time-chatroom.vercel.app/member', {withCredentials: true});
 
         userDataRef.current = resMember.data;
 
-        const resRoom = await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/room', {
+        const resRoom = await axios.get('https://member-real-time-chatroom.vercel.app/room', {
           params: { userId: userDataRef.current.member._id } 
         });
 

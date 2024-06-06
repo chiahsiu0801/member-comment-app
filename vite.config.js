@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: [
-          "https://member-comment-system.onrender.com",
+          "https://member-real-time-chatroom.vercel.app/",
         ],
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),

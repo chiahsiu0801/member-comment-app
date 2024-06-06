@@ -21,7 +21,7 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/login', {
+      const res = await axios.post('https://member-real-time-chatroom.vercel.app/login', {
         data: data
       }, {withCredentials: true});
 

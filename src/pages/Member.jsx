@@ -47,7 +47,7 @@ export default function Member() {
     const date = new Date().toLocaleString();
 
     try {
-      const res = await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/comment', {
+      const res = await axios.post('https://member-real-time-chatroom.vercel.app/comment', {
         commentUserId: userData._id,
         username: userData.name,
         comment: newComment,
@@ -82,7 +82,7 @@ export default function Member() {
 
   const handleReplySendClick = async (reply) => {
     try {
-      const res = await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/reply', {
+      const res = await axios.post('https://member-real-time-chatroom.vercel.app/reply', {
         repliedCommentId: repliedCommentId,
         reply: reply,
         replyUserId: userData._id,
@@ -126,7 +126,7 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/member', {
+        const res = await axios.get('https://member-real-time-chatroom.vercel.app/member', {
           params: { roomId: roomId },
           withCredentials: true
         });
@@ -143,7 +143,7 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/allmembers', {
+        const res = await axios.get('https://member-real-time-chatroom.vercel.app/allmembers', {
           params: { roomId: roomId, },
         });
 
@@ -158,7 +158,7 @@ export default function Member() {
     (async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/comment', {
+        const res = await axios.get('https://member-real-time-chatroom.vercel.app/comment', {
           params: { roomId: roomId },
         });
 
