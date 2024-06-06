@@ -9,7 +9,7 @@ import Comment from "../components/Comment";
 import ReplyTextarea from "../components/ReplyTextarea";
 import Loading from "../components/Loading";
 import '../index.css';
-const socket = io('http://localhost:5000');
+const socket = io('https://member-real-time-chatroom-2z6b2d67q-chiahsiu0801s-projects.vercel.app/');
 
 export default function Member() {
   const [userData, setUserData] = useState({});
