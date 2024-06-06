@@ -21,7 +21,7 @@ export default function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('http://localhost:3000/signup', {
+      const res = await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/signup', {
         data: data
       }, {withCredentials: true});
 

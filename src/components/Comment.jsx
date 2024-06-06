@@ -26,7 +26,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
           isLike: true,
         };
 
-        await axios.post('http://localhost:3000/like', likeData, {withCredentials: true});
+        await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/like', likeData, {withCredentials: true});
 
         socket.emit('send_like', {
           ...likeData,
@@ -41,7 +41,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
           isLike: false,
         };
 
-        await axios.post('http://localhost:3000/like', unlikeData, {withCredentials: true});
+        await axios.post('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/like', unlikeData, {withCredentials: true});
 
         socket.emit('send_like', {
           ...unlikeData,

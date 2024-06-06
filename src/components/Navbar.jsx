@@ -6,7 +6,7 @@ export default function Navbar({ roomId, roomName }) {
 
   const handleClick = async () => {
     try {
-      await axios.get('http://localhost:3000/signout', {withCredentials: true});
+      await axios.get('https://member-real-time-chatroom-kh1jbl21r-chiahsiu0801s-projects.vercel.app/signout', {withCredentials: true});
       navigate('/');
     } catch (error) {
       console.log(error);
