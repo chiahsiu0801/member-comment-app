@@ -285,7 +285,7 @@ export default function Member() {
   
   return (
     <>
-      <div className="bg-gray-900 relative max-h-dvh h-dvh">
+      <div className="bg-gray-900 relative max-h-dvh h-dvh overflow-y-hidden">
         <Navbar roomId={roomId} roomName={roomName} />
         <div className="w-full pt-20 h-dvh flex">
           <div className={`w-full md:w-48 lg:w-80 h-[calc(100%-80px)] bg-slate-600 flex flex-col items-center fixed z-[9999] md:z-0 transition-transform ${sidebarCollapse ? `-translate-x-full md:-translate-x-0` : ``}`}>
