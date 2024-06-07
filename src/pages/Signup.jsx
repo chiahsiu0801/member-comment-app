@@ -25,6 +25,8 @@ export default function Signup() {
         data: data
       }, {withCredentials: true});
 
+      localStorage.setItem('token', res.data.token);
+
       setSignupSuccess(res.data.success);
       setFailedMessage('');
 

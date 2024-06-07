@@ -25,6 +25,8 @@ function Login() {
         data: data
       }, {withCredentials: true});
 
+      localStorage.setItem('token', res.data.token);
+
       setLoginSuccess(res.data.success);
       setFailedMessage('');
       navigate('/roomlist');

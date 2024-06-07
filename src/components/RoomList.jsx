@@ -61,6 +61,7 @@ const RoomList = () => {
   const handleLogOut = async () => {
     try {
       await axios.get(`${import.meta.env.VITE_API_URL}/signout`, {withCredentials: true});
+      localStorage.removeItem('token');
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -71,7 +72,14 @@ const RoomList = () => {
     (async () => {
       try {
         setIsLoading(true);
-        const resMember = await axios.get(`${import.meta.env.VITE_API_URL}/member`, {withCredentials: true});
+        // const resMember = await axios.get(`${import.meta.env.VITE_API_URL}/member`, {withCredentials: true});
+        const token = localStorage.getItem('token');
+        console.log('Token being sent:', token);
+        const resMember = await axios.get(`${import.meta.env.VITE_API_URL}/member`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
 
         userDataRef.current = resMember.data;
 

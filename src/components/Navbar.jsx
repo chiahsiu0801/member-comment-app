@@ -7,6 +7,7 @@ export default function Navbar({ roomId, roomName }) {
   const handleClick = async () => {
     try {
       await axios.get(`${import.meta.env.VITE_API_URL}/signout`, {withCredentials: true});
+      localStorage.removeItem('token');
       navigate('/');
     } catch (error) {
       console.log(error);

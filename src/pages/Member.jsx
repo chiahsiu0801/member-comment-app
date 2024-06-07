@@ -127,9 +127,15 @@ export default function Member() {
   useEffect(() => {
     (async () => {
       try {
+        // const res = await axios.get(`${import.meta.env.VITE_API_URL}/member`, {
+        //   params: { roomId: roomId },
+        //   withCredentials: true
+        // });
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/member`, {
           params: { roomId: roomId },
-          withCredentials: true
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
 
         setUserData(res.data.member);
