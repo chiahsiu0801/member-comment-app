@@ -9,8 +9,8 @@ import Comment from "../components/Comment";
 import ReplyTextarea from "../components/ReplyTextarea";
 import Loading from "../components/Loading";
 import '../index.css';
-// const socket = io('https://realtime-chatroom-5e6206396b62.herokuapp.com/');
-const socket = io('http://localhost:5000');
+const socket = io('https://realtime-chatroom-5e6206396b62.herokuapp.com/');
+// const socket = io('http://localhost:5000');
 
 export default function Member() {
   const [userData, setUserData] = useState({});
