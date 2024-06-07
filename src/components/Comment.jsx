@@ -26,7 +26,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
           isLike: true,
         };
 
-        await axios.post('https://member-real-time-chatroom.vercel.app/like', likeData, {withCredentials: true});
+        await axios.post(`${import.meta.env.VITE_API_URL}/like`, likeData, {withCredentials: true});
 
         socket.emit('send_like', {
           ...likeData,
@@ -41,7 +41,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
           isLike: false,
         };
 
-        await axios.post('https://member-real-time-chatroom.vercel.app/like', unlikeData, {withCredentials: true});
+        await axios.post(`${import.meta.env.VITE_API_URL}/like`, unlikeData, {withCredentials: true});
 
         socket.emit('send_like', {
           ...unlikeData,

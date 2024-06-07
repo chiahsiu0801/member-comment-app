@@ -6,7 +6,7 @@ export default function Navbar({ roomId, roomName }) {
 
   const handleClick = async () => {
     try {
-      await axios.get('https://member-real-time-chatroom.vercel.app/signout', {withCredentials: true});
+      await axios.get(`${import.meta.env.VITE_API_URL}/signout`, {withCredentials: true});
       navigate('/');
     } catch (error) {
       console.log(error);

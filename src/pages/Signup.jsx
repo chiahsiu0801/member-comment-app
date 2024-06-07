@@ -21,7 +21,7 @@ export default function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post('https://member-real-time-chatroom.vercel.app/signup', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/signup`, {
         data: data
       }, {withCredentials: true});
 
