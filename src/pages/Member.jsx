@@ -21,7 +21,7 @@ export default function Member() {
   const [onlineMembers, setOnlineMembers] = useState([]);
   const [replyStatus, setReplyStatus] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [sidebarCollapse, setSidebarCollapse] = useState(false);
+  const [sidebarCollapse, setSidebarCollapse] = useState(true);
   const [roomName, setRoomName] = useState('');
   const [isMemberExpand, setIsMemberExpand] = useState(true);
   
@@ -285,7 +285,7 @@ export default function Member() {
   
   return (
     <>
-      <div className="bg-gray-900 relative h-dvh">
+      <div className="bg-gray-900 relative max-h-dvh h-dvh">
         <Navbar roomId={roomId} roomName={roomName} />
         <div className="w-full pt-20 h-dvh flex">
           <div className={`w-full md:w-48 lg:w-80 h-[calc(100%-80px)] bg-slate-600 flex flex-col items-center fixed z-[9999] md:z-0 transition-transform ${sidebarCollapse ? `-translate-x-full md:-translate-x-0` : ``}`}>
@@ -320,7 +320,7 @@ export default function Member() {
                 </div>
               <div className={`overflow-y-auto flex transition-all duration-100 self-start ${isMemberExpand ? `animate-dropdown` : `-translate-y-full animate-dropup hidden`}`} ref={memberListRef}>
                 <div className="w-0.5 ml-8 mr-4 bg-white"></div>
-                <div className="-mx-4 overflow-y-scroll">
+                <div className="-mx-4">
                   {
                     onlineMembers && onlineMembers.map((member) => {
                       return (
@@ -337,10 +337,10 @@ export default function Member() {
             
             </div>
           </div>
-          <div ref={commentsContainerRef} className="w-full h-full flex md:flex-1 justify-center md:ml-48 lg:ml-80 overflow-y-hidden">
-            <div className="w-full px-16 md:px-24 lg:px-36 xl:px-44 2xl:px-60 pb-32 flex flex-col overflow-y-auto">
+          <div ref={commentsContainerRef} className="w-full h-full flex md:flex-1 justify-center md:ml-48 lg:ml-80">
+            <div className="w-full max-h-[calc(100dvh-80px)] px-16 md:px-24 lg:px-36 xl:px-44 2xl:px-60 pb-32 flex flex-col overflow-y-auto">
               {
-                isLoading ? <div className="fixed z-50 left-[55%] top-1/2">
+                isLoading ?<div className="absolute z-50 top-1/2 left-1/2 md:left-[calc(50%+96px)] lg:left-[calc(50%+160px)] -translate-x-1/2 -translate-y-1/2">
                   <Loading type="bubbles" color="white" />
                 </div> :
                 commentList.map((comment) => {
