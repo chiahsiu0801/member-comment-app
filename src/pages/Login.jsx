@@ -36,55 +36,53 @@ function Login() {
   }
 
   return (
-    <>
-      <div className="w-[300px] md:w-[500px] max-h-dvh bg-white p-8 rounded-md shadow-md m-auto">
-        <h2 className="text-2xl font-semibold mb-5">Login</h2>
-        {
-          (!loginSuccess) && <FailedMessage message={failedMessage} /> 
-        }
-        <form action="/login" onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
-          {/* Username input */}
-          <Input labelText="Email" name="email" register={register} errors={errors} placeholder="EX: test@test.com" rules={
-            {
-              required: {
-                value: true,
-                message: 'Email is required'
-              },
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: 'Email pattern is not correct',
-              }
+    <div className="w-[300px] md:w-[500px] max-h-dvh bg-white p-8 rounded-md shadow-md">
+      <h2 className="text-2xl font-semibold mb-5">Login</h2>
+      {
+        (!loginSuccess) && <FailedMessage message={failedMessage} />
+      }
+      <form action="/login" onSubmit={handleSubmit(onSubmit)} method="POST" noValidate>
+        {/* Username input */}
+        <Input labelText="Email" name="email" register={register} errors={errors} placeholder="EX: test@test.com" rules={
+          {
+            required: {
+              value: true,
+              message: 'Email is required'
+            },
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: 'Email pattern is not correct',
             }
-          } />
+          }
+        } />
 
-          {/* Password input */}
-          <Input labelText="Password" name="password" register={register} errors={errors} placeholder="EX: abc123456" rules={
-            {
-              required: {
-                value: true,
-                message: 'Password is required'
-              },
-              minLength: {
-                value: 6,
-                message: 'Password should exceed 6 characters in length'
-              },
-              maxLength: {
-                value: 12,
-                message: 'Password should not exceed 12 characters in length'
-              }
-            } 
-          } /> 
+        {/* Password input */}
+        <Input labelText="Password" name="password" register={register} errors={errors} placeholder="EX: abc123456" rules={
+          {
+            required: {
+              value: true,
+              message: 'Password is required'
+            },
+            minLength: {
+              value: 6,
+              message: 'Password should exceed 6 characters in length'
+            },
+            maxLength: {
+              value: 12,
+              message: 'Password should not exceed 12 characters in length'
+            }
+          }
+        } />
 
-          {/* Login button */}
-          <button
-            className="w-full bg-sky-500 text-white p-2 rounded mt-8 hover:bg-sky-700"
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
-      </div>
-    </>
+        {/* Login button */}
+        <button
+          className="w-full bg-sky-500 text-white p-2 rounded mt-8 hover:bg-sky-700"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 }
 

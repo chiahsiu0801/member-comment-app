@@ -89,43 +89,45 @@ const RoomList = () => {
     })()
   }, [navigate]);
 
-  return ( 
-    <div className="w-[300px] md:w-[500px] bg-white p-8 rounded-md shadow-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <div className="flex flex-col gap-2">
-        <label htmlFor="roomname" className="font-bold">Create new room</label>
-        <input id="roomname" type="text" value={roomName} placeholder="Enter room name ..." onChange={(e) => setRoomName(e.target.value)} className="w-full p-2 border border-black rounded-md" />
-        <button className="w-full bg-sky-500 text-white p-2 rounded hover:bg-sky-700" onClick={handleCreateRoom}>
-          Create
-        </button>
-      </div>
-      <form onSubmit={handleSubmit(handleJoinRoom)} className="flex flex-col gap-2 my-4">
-        {
-          (!joinSuccess) && <FailedMessage message="Room is not exist!" />
-        }
-        {errors.id && <FailedMessage message={errors.id.message} />}
-        <label htmlFor="id" className="font-bold">Join another room</label>
-        <input id="id" type="text" placeholder="Enter room id ..." className="w-full p-2 border border-black rounded-md" {...register("id")}/>
-        <button type="submit" className="w-full bg-sky-500 text-white p-2 rounded hover:bg-sky-700">
-          Join
-        </button>
-      </form>
-      <div className="border-2 border-black mt-4 rounded-md p-2">
-        <p className="font-bold">Joined rooms</p>
-        <div className="h-40 flex flex-col items-center overflow-y-scroll">
-          {
-            isLoading ?
-            <div className="my-auto">
-              <Loading color={"gray"} type={"spin"} height={"50px"} width={"50px"} />
-            </div> :
-            roomList.map(room => (
-              <Link key={room._id} to={`/member/${room._id}`} className="w-full p-2 text-center rounded-md bg-transparent hover:bg-gray-300">{room.roomName}</Link>
-            ))
-          }
+  return (
+    <div className="flex h-dvh justify-center items-center">
+      <div className="w-[300px] md:w-[500px] max-h-dvh bg-white p-8 rounded-md shadow-md overflow-y-auto">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="roomname" className="font-bold">Create new room</label>
+          <input id="roomname" type="text" value={roomName} placeholder="Enter room name ..." onChange={(e) => setRoomName(e.target.value)} className="w-full p-2 border border-black rounded-md" />
+          <button className="w-full bg-sky-500 text-white p-2 rounded hover:bg-sky-700" onClick={handleCreateRoom}>
+            Create
+          </button>
         </div>
+        <form onSubmit={handleSubmit(handleJoinRoom)} className="flex flex-col gap-2 my-4">
+          {
+            (!joinSuccess) && <FailedMessage message="Room is not exist!" />
+          }
+          {errors.id && <FailedMessage message={errors.id.message} />}
+          <label htmlFor="id" className="font-bold">Join another room</label>
+          <input id="id" type="text" placeholder="Enter room id ..." className="w-full p-2 border border-black rounded-md" {...register("id")}/>
+          <button type="submit" className="w-full bg-sky-500 text-white p-2 rounded hover:bg-sky-700">
+            Join
+          </button>
+        </form>
+        <div className="border-2 border-black mt-4 rounded-md p-2">
+          <p className="font-bold">Joined rooms</p>
+          <div className="h-40 flex flex-col items-center overflow-y-scroll">
+            {
+              isLoading ?
+              <div className="my-auto">
+                <Loading color={"gray"} type={"spin"} height={"50px"} width={"50px"} />
+              </div> :
+              roomList.map(room => (
+                <Link key={room._id} to={`/member/${room._id}`} className="w-full p-2 text-center rounded-md bg-transparent hover:bg-gray-300">{room.roomName}</Link>
+              ))
+            }
+          </div>
+        </div>
+        <button className="w-full bg-red-500 text-white mt-2 p-2 rounded hover:bg-red-700" onClick={handleLogOut}>
+          Log out
+        </button>
       </div>
-      <button className="w-full bg-red-500 text-white mt-2 p-2 rounded hover:bg-red-700" onClick={handleLogOut}>
-        Log out
-      </button>
     </div>
    );
 }

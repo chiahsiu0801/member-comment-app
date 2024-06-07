@@ -9,7 +9,8 @@ import Comment from "../components/Comment";
 import ReplyTextarea from "../components/ReplyTextarea";
 import Loading from "../components/Loading";
 import '../index.css';
-const socket = io('https://realtime-chatroom-5e6206396b62.herokuapp.com/');
+// const socket = io('https://realtime-chatroom-5e6206396b62.herokuapp.com/');
+const socket = io('http://localhost:5000');
 
 export default function Member() {
   const [userData, setUserData] = useState({});
@@ -284,10 +285,10 @@ export default function Member() {
   
   return (
     <>
-      <div className="bg-gray-900 relative max-h-dvh">
+      <div className="bg-gray-900 relative h-dvh">
         <Navbar roomId={roomId} roomName={roomName} />
-        <div className="w-full h-full mt-20 flex">
-          <div className={`w-full md:w-48 lg:w-80 h-full bg-slate-600 flex flex-col items-center fixed z-[9999] md:z-0 transition-transform ${sidebarCollapse ? `-translate-x-full md:-translate-x-0` : ``}`}>
+        <div className="w-full pt-20 h-dvh flex">
+          <div className={`w-full md:w-48 lg:w-80 h-[calc(100%-80px)] bg-slate-600 flex flex-col items-center fixed z-[9999] md:z-0 transition-transform ${sidebarCollapse ? `-translate-x-full md:-translate-x-0` : ``}`}>
             <div className="w-full absolute z-50 bg-slate-600 ">
               {
                 <div
@@ -317,7 +318,7 @@ export default function Member() {
                     <Triangle className={`w-4 h-4 ml-2 transition-all ${isMemberExpand ? `rotate-180` : `rotate-90`}`} />
                   </button>
                 </div>
-              <div className={`flex transition-all duration-100 self-start ${isMemberExpand ? `animate-dropdown` : `-translate-y-full animate-dropup hidden`}`} ref={memberListRef}>
+              <div className={`overflow-y-auto flex transition-all duration-100 self-start ${isMemberExpand ? `animate-dropdown` : `-translate-y-full animate-dropup hidden`}`} ref={memberListRef}>
                 <div className="w-0.5 ml-8 mr-4 bg-white"></div>
                 <div className="-mx-4 overflow-y-scroll">
                   {
@@ -336,8 +337,8 @@ export default function Member() {
             
             </div>
           </div>
-          <div ref={commentsContainerRef} className="w-full h-[calc(100dvh-128px)] flex flex-col md:flex-1 items-center mb-32 md:mb-36 md:ml-48 lg:ml-80 overflow-y-hidden">
-            <div className="w-2/3 md:w-[500px] lg:w-[600px] xl:w-[800px] flex flex-col overflow-y-auto">
+          <div ref={commentsContainerRef} className="w-full h-full flex md:flex-1 justify-center md:ml-48 lg:ml-80 overflow-y-hidden">
+            <div className="w-full px-16 md:px-24 lg:px-36 xl:px-44 2xl:px-60 pb-32 flex flex-col overflow-y-auto">
               {
                 isLoading ? <div className="fixed z-50 left-[55%] top-1/2">
                   <Loading type="bubbles" color="white" />
@@ -352,15 +353,15 @@ export default function Member() {
                   );
                 })
               }
-              <div className={`rounded-xl w-2/3 md:w-[500px] lg:w-[600px] xl:w-[800px] h-32 border-2 border-slate-500 fixed bottom-0 mt-2 z-[999]transition-transform duration-300 ${replyStatus ? `translate-y-[136px]` : `translate-y-0`}`}>
-                <div className="h-3/4">
-                  <textarea rows="4" value={newComment} className="resize-none h-full w-full rounded-t-lg block p-2.5 text-lg bg-gray-700 border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none" placeholder="Send a message..." onChange={handleChange} />
-                </div>
-                <div className="bg-gray-500 h-1/4 w-full rounded-b-lg flex justify-center items-center py-1">
-                  <button type="button" className="bg-blue-700 hover:bg-blue-900 text-white font-bold text-sm py-1 px-4 rounded" onClick={handleClick}>Send</button>
-                </div>
-              </div>
               <div ref={endOfCommentsRef}></div>
+            </div>
+          </div>
+          <div className={`rounded-xl w-full md:w-[calc(100%-384px)] lg:w-[calc(100%-608px)] xl:w-[calc(100%-672px)] 2xl:w-[calc(100%-800px)] ml-0 md:ml-[288px] lg:ml-[464px] xl:ml-[496px] 2xl:ml-[560px] h-32 border-2 border-slate-500 fixed bottom-0 z-[999]transition-transform duration-300 ${replyStatus ? `translate-y-[136px]` : `translate-y-0`}`}>
+            <div className="h-3/4">
+              <textarea rows="4" value={newComment} className="resize-none h-full w-full rounded-t-lg block p-2.5 text-lg bg-gray-700 border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none" placeholder="Send a message..." onChange={handleChange} />
+            </div>
+            <div className="bg-gray-500 h-1/4 w-full rounded-b-lg flex justify-center items-center py-1">
+              <button type="button" className="bg-blue-700 hover:bg-blue-900 text-white font-bold text-sm py-1 px-4 rounded" onClick={handleClick}>Send</button>
             </div>
           </div>
         </div>
