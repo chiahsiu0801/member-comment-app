@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-gray-900 fixed overflow-y-scroll w-ful;
+    @apply bg-gray-900 h-screen;
   }
 
   #root {
@@ -13,13 +13,11 @@
 }
 
 @layer components {
-  /* .commentTextArea {
-    @apply rounded-xl w-[270px] md:w-[500px] lg:w-[600px] xl:w-[800px] h-32 border-2 border-slate-500 fixed bottom-0 mt-2 z-[999];
-  } */
+  html {
+    height: -webkit-fill-available;
+  }
 
-  /* .replyTextArea {
-    @apply rounded-xl w-3/5 h-1/6 border-2 border-slate-500 mt-2 fixed bottom-0 z-50;
-    transform: translate(0, 100%);
-    transition: transform 0.3s ease-in-out; 
-  } */
+  body {
+    height: -webkit-fill-available;
+  }
 }
