@@ -84,7 +84,9 @@ export default function Signup() {
               }
             } 
           } />
-          <Input labelText="Profile Image (Optional)" name="imageUrl" register={register} errors={errors} placeholder="Enter the image URL" />
+          <div className="mt-6">
+            <Input labelText="Profile Image (Optional)" name="imageUrl" register={register} errors={errors} placeholder="Enter the image URL" />
+          </div>
 
           {/* Login button */}
           <button
