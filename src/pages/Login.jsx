@@ -37,7 +37,7 @@ function Login() {
 
   return (
     <>
-      <div className="w-[300px] md:w-[500px] bg-white p-8 rounded-md shadow-md m-auto">
+      <div className="w-[300px] md:w-[500px] max-h-dvh bg-white p-8 rounded-md shadow-md m-auto">
         <h2 className="text-2xl font-semibold mb-5">Login</h2>
         {
           (!loginSuccess) && <FailedMessage message={failedMessage} /> 

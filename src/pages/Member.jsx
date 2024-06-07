@@ -336,7 +336,7 @@ export default function Member() {
             
             </div>
           </div>
-          <div ref={commentsContainerRef} className="w-full h-[calc(100%-128px)] flex flex-col md:flex-1 items-center mb-32 md:mb-36 md:ml-48 lg:ml-80 overflow-y-hidden">
+          <div ref={commentsContainerRef} className="w-full h-[calc(100dvh-128px)] flex flex-col md:flex-1 items-center mb-32 md:mb-36 md:ml-48 lg:ml-80 overflow-y-hidden">
             <div className="w-2/3 md:w-[500px] lg:w-[600px] xl:w-[800px] flex flex-col overflow-y-auto">
               {
                 isLoading ? <div className="fixed z-50 left-[55%] top-1/2">
