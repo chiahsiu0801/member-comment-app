@@ -9,8 +9,7 @@ import Comment from "../components/Comment";
 import ReplyTextarea from "../components/ReplyTextarea";
 import Loading from "../components/Loading";
 import '../index.css';
-const socket = io('https://realtime-chatroom-5e6206396b62.herokuapp.com/');
-// const socket = io('http://localhost:5000');
+const socket = io(`${import.meta.env.VITE_API_URL}`);
 
 export default function Member() {
   const [userData, setUserData] = useState({});
@@ -302,7 +301,7 @@ export default function Member() {
                 >
                   <div className="flex items-center justify-center">
                     <img src={userData.imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-10 w-10 object-cover" />
-                    <h2 className="ml-2 mr-1 text-white text-base lg:text-2xl">Hello, {userData.name}</h2>
+                    <h2 className="ml-2 mr-1 text-white text-base lg:text-2xl truncate">Hello, {userData.name}</h2>
                   </div>
                   <button
                     className={`bg-white w-10 h-10 rounded-md absolute top-3 right-6 md:hidden transition-transform ${sidebarCollapse ? `translate-x-[76px]` : ``}`}
@@ -330,9 +329,9 @@ export default function Member() {
                   {
                     onlineMembers && onlineMembers.map((member) => {
                       return (
-                        <div key={member._id} className="flex mx-4 p-2 items-center">
+                        <div key={member._id} className="w-[240px] md:w-[120px] lg:w-[240px] flex mx-4 p-2 items-center">
                           <img src={member.imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-8 w-8 object-cover" />
-                          <h2 className="ml-2 mr-1 text-white text-md">{member.name}</h2>
+                          <h2 className="ml-2 mr-1 text-white text-md truncate">{member.name}</h2>
                         </div>
                       );
                     })
@@ -351,8 +350,8 @@ export default function Member() {
                 </div> :
                 commentList.map((comment) => {
                   return (
-                    <div key={comment._id} className={`w-9/12 md:w-[350px] xl:w-[500px] ${userData._id === comment.commentUserId ? `self-end` : `self-start`}`}>
-                      <Comment id={comment._id} name={comment.name} comment={comment.comment} date={comment.date} imageUrl={comment.imageUrl} likedUser={comment?.likedUser} userData={userData} handleReplyClick={handleReplyClick} replyComments={replyList.get(comment._id)} allMembersMap={allMembersMap} isLoading={isLoading} replyStatus={replyStatus} socket={socket} roomId={roomId} >
+                    <div key={comment._id} className={`w-10/12 md:w-[350px] xl:w-[500px] ${userData._id === comment.commentUserId ? `self-end` : `self-start`}`}>
+                      <Comment id={comment._id} name={comment.name} comment={comment.comment} date={comment.createdAt} imageUrl={comment.imageUrl} likedUser={comment?.likedUser} userData={userData} handleReplyClick={handleReplyClick} replyComments={replyList.get(comment._id)} allMembersMap={allMembersMap} isLoading={isLoading} replyStatus={replyStatus} socket={socket} roomId={roomId} >
                         { comment._id === repliedCommentId && <ReplyTextarea name={comment.name} handleClick={handleReplySendClick} />}
                       </Comment>
                     </div>

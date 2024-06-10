@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import "../index.css";
 
-export default function ReplyTextarea({ name, handleClick }) {
+export default function ReplyTextarea({ handleClick }) {
   const { roomId } = useParams();
 
   const [reply, setReply] = useState('');
@@ -17,9 +17,9 @@ export default function ReplyTextarea({ name, handleClick }) {
   return (
     <div className="mt-1 relative">
       <div>
-        <textarea rows="1" className="resize-none w-full rounded-lg block p-2.5 text-sm md:text-md bg-gray-500 border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none" placeholder={`Reply to ${name}...`} onChange={handleChange} value={reply} ref={textareaRef} />
+        <textarea rows="1" className="resize-none w-full rounded-lg block px-4 py-2.5 text-xs md:text-md bg-gray-500 border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none" placeholder={`Your reply...`} onChange={handleChange} value={reply} ref={textareaRef} />
       </div>
-      <button type="button" className="hover:text-white text-slate-300 font-bold text-sm py-1 px-4 rounded absolute bottom-0 left-full -translate-x-full -translate-y-1/3" onClick={() => {
+      <button type="button" className="hover:text-white text-slate-300 font-bold text-sm rounded absolute bottom-1 right-1 -translate-y-1/3" onClick={() => {
         handleClick(reply, roomId);
         setReply('');
       }}>

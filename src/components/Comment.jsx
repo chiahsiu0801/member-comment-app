@@ -73,13 +73,15 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
 
   return (
     <>
-      <div className="bg-gray-700 text-gray-400 px-6 py-2 md:py-4 rounded-lg my-4 relative box-content" id={id} ref={commentSectionRef}>
+      <div className="bg-gray-700 text-gray-400 px-4 py-3 md:py-4 rounded-lg my-4 relative box-content" id={id} ref={commentSectionRef}>
         <div className="bg-gray-700" ref={commentRef}>
           <div className="bg-gray-700">
-            <div className="flex items-center my-1">
-              <img src={imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-6 md:h-10 w-6 md:w-10 object-cover" />
-              <h2 className="ml-2 mr-1 text-white text-md md:text-lg">{name}</h2>
-              <p className="mx-1 mt-0.5 text-xs md:text-sm">{date}</p>
+            <div className="flex flex-col md:flex-row md:items-center gap-2">
+              <div className="flex items-center">
+                <img src={imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-6 md:h-10 w-6 md:w-10 object-cover" />
+                <h2 className="ml-2 mr-1 text-white text-md md:text-lg truncate">{name}</h2>
+              </div>
+              <p className="text-[8px] md:text-xs">{new Date(date).toLocaleString()}</p>
             </div>
             <pre className="my-2 md:my-4 text-wrap font-sans">
               {comment}
