@@ -105,15 +105,15 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
               <div className="flex ml-1" ref={totalRef}>
                 <div className="w-full" id="replyContainer">
                   {
-                    replyComments?.map(replyComment => {
+                    replyComments?.map((replyComment, index) => {
                       return (
-                        <div key={replyComment._id} className="w-full my-2 py-1 rounded-md reply">
+                        <div key={index} className="w-full my-2 py-1 rounded-md reply">
                           <div className="flex items-center">
                             <CornerDownRight className="w-4 h-4 md:w-6 md:h-6 mr-2" />
-                            <img src={allMembersMap.get(replyComment.replyUserId)?.[0] || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-3 md:h-6 w-3 md:w-6 object-cover" />
+                            <img src={allMembersMap.get(replyComment.replyUserId)?.[0] || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-[14px] md:h-6 w-[14px] md:w-6 object-cover" />
                             <h2 className="ml-2 mr-1 text-white text-sm md:text-md">{allMembersMap.get(replyComment.replyUserId)?.[1]}</h2>
                           </div>
-                          <pre className="text-sm md:text-md ml-[45px] md:ml-[66px] text-wrap font-sans">{replyComment.reply}</pre>
+                          <pre className="text-sm md:text-md ml-[36px] md:ml-[56px] pl-2 text-wrap font-sans">{replyComment.reply}</pre>
                         </div>
                       );
                     })
