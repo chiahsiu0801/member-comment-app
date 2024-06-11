@@ -323,7 +323,7 @@ export default function Member() {
                     <Triangle className={`w-4 h-4 ml-2 transition-all ${isMemberExpand ? `rotate-180` : `rotate-90`}`} />
                   </button>
                 </div>
-              <div className={`overflow-y-auto flex transition-all duration-100 self-start ${isMemberExpand ? `animate-dropdown` : `-translate-y-full animate-dropup hidden`}`} ref={memberListRef}>
+              <div className={`overflow-y-auto overflow-x-hidden flex transition-all duration-100 self-start ${isMemberExpand ? `animate-dropdown` : `-translate-y-full animate-dropup hidden`}`} ref={memberListRef}>
                 <div className="w-0.5 ml-8 mr-4 bg-white"></div>
                 <div className="-mx-4">
                   {

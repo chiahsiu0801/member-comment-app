@@ -81,7 +81,7 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
                 <img src={imageUrl || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-6 md:h-10 w-6 md:w-10 object-cover" />
                 <h2 className="ml-2 mr-1 text-white text-md md:text-lg truncate">{name}</h2>
               </div>
-              <p className="text-[8px] md:text-xs">{new Date(date).toLocaleString()}</p>
+              <p className="text-[10px] md:text-xs">{new Date(date).toLocaleString()}</p>
             </div>
             <pre className="my-2 md:my-4 text-wrap font-sans">
               {comment}
@@ -109,11 +109,11 @@ export default function Comment({ children, id, name, comment, date, imageUrl, l
                       return (
                         <div key={replyComment._id} className="w-full my-2 py-1 rounded-md reply">
                           <div className="flex items-center">
-                            <CornerDownRight className="mr-2" />
+                            <CornerDownRight className="w-4 h-4 md:w-6 md:h-6 mr-2" />
                             <img src={allMembersMap.get(replyComment.replyUserId)?.[0] || `${import.meta.env.VITE_BASENAME}/profile-icon.jpg`} alt="" className="rounded-full ring-2 h-3 md:h-6 w-3 md:w-6 object-cover" />
                             <h2 className="ml-2 mr-1 text-white text-sm md:text-md">{allMembersMap.get(replyComment.replyUserId)?.[1]}</h2>
                           </div>
-                          <pre className="text-sm md:text-md ml-[54px] md:ml-[66px] text-wrap font-sans">{replyComment.reply}</pre>
+                          <pre className="text-sm md:text-md ml-[45px] md:ml-[66px] text-wrap font-sans">{replyComment.reply}</pre>
                         </div>
                       );
                     })
