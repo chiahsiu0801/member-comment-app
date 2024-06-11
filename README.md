@@ -1,8 +1,69 @@
-# React + Vite
+# Real-time Chat Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application enabling users to create and join private chat rooms, receive notifications for replied messages, and see online users in real-time.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Contact](#contact)
+
+## Features
+
+- User authentication and authorization using JWT tokens
+- Creation and management of private chat rooms with unique room IDs
+- Real-time message notifications for replies
+- Online user status display
+
+## Technologies Used
+
+- **Front-end:**
+  - React
+  - Tailwind CSS
+  - React Router
+  - React Hook Form
+- **Back-end:**
+  - Node.js
+  - Express.js
+  - MongoDB
+  - Mongoose
+- **Real-time Communication:**
+  - socket.io
+- **Build Tool:**
+  - Vite
+- **Authentication:**
+  - JWT (JSON Web Tokens)
+
+## Installation
+
+To get a local copy up and running follow these simple steps.
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/chiahsiu0801/realtime-chat-app.git
+   ```
+2. **Install dependencies for the front-end:**
+   ```sh
+   npm install
+   ```
+## Usage
+
+1. **Run the front-end:**
+   ```sh
+   npm run dev:frontend
+   ```
+2. **Be sure to clone and run the back-end code in <https://github.com/chiahsiu0801/realtime-chat-server>**
+3. Open your browser and navigate to http://localhost:5173.
+
+## Deployment
+Front-end: Deployed on GitHub Pages.
+
+Back-end: Deployed on Heroku.
+
+## Contact
+Chiahsiu Chang - zyzhangtom870801@gmail.com
+
+Project Link: https://github.com/chiahsiu0801/realtime-chat-app
